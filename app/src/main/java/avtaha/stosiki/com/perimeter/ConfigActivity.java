@@ -37,7 +37,9 @@ public class ConfigActivity extends Activity {
 
         AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, ShomerChecker.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        intent.setAction("com.stosiki.avtaha.perimeter.CHECK");
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Set the alarm to start at 8:30 a.m.
         Calendar calendar = Calendar.getInstance();
