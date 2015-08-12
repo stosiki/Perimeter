@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Date;
+
 /**
  * Created by User on 12/08/2015.
  *
@@ -16,11 +18,10 @@ public class TestActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "Creating TestActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        Toast.makeText(this, "Alarm!", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "Hourly alarm, time=" + new Date().toString());
 
         // present dot pattern and listen to the input
     }
