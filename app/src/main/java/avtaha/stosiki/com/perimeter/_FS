@@ -1,0 +1,18 @@
+- Alarm service that would broadcast an intent every hour starting from 11:00PM to 6:00AM
+- Make sure this service will wake a phone set from sleep
+- Make sure the service will survive reboot
+
+- Implement an activity, which would present user with dot pattern
+- Implement SMS send functionality
+- Implement configuration (SMS target phone)
+
+/*
+boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
+        new Intent("com.my.package.MY_UNIQUE_ACTION"),
+        PendingIntent.FLAG_NO_CREATE) != null);
+
+if (alarmUp)
+{
+    Log.d("myTag", "Alarm is already active");
+}
+*/
