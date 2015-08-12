@@ -17,6 +17,12 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".ShomerChecker">
+            <intent-filter>
+                <action android:name="com.stosiki.avtaha.perimeter.CHECK" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".ConfigActivity">
             <intent-filter>
                 <action android:name = "android.intent.action.MAIN" />
