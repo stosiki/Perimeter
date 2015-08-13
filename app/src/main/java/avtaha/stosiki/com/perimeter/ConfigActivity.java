@@ -32,6 +32,16 @@ public class ConfigActivity extends Activity {
         startChecker(getApplicationContext());
     }
 
+    public void onCancel(View controlView) {
+        Context context = getApplicationContext();
+        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, ShomerChecker.class);
+        intent.setAction("com.stosiki.avtaha.perimeter.CHECK");
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmMgr.cancel(alarmIntent);
+    }
+
     public void startChecker(Context context) {
         Log.d(TAG, "Checker started");
 
@@ -41,21 +51,16 @@ public class ConfigActivity extends Activity {
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
-        // Set the alarm to start at 8:30 a.m.
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.MINUTE, 10);
-
-        // setRepeating() lets you specify a precise custom interval--in this case,
-        // 20 minutes.
-//        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-//                1000 * 60 * 1, alarmIntent);
-
-        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP,
-                System.currentTimeMillis() + 10000,
-                1000 * 60,
-                alarmIntent
-                );
+        for (int i : new int[]{22, 23, 0, 1, 2, 3, 4, 5, 6, 7}) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, i);
+            calendar.set(Calendar.MINUTE, 10);
+            alarmMgr.setInexactRepeating(
+                    AlarmManager.RTC_WAKEUP,
+                    calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY,
+                    alarmIntent
+            );
+        }
     }
 }

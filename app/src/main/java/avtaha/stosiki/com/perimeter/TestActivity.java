@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import haibison.android.lockpattern.LockPatternActivity;
-import haibison.android.lockpattern.util.AlpSettings;
-
 /**
  * Created by User on 12/08/2015.
  *
@@ -24,11 +21,14 @@ public class TestActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        Log.d(TAG, "Creating TestActivity");
+        Log.d(TAG, "Creating TestActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
         showPattern();
+        Log.d(TAG, "Hourly alarm, time=" + new Date().toString());
+
+        // present dot pattern and listen to the input
     }
 
     private void notifyManger() {
