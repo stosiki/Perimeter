@@ -21,6 +21,7 @@ public class ShomerChecker extends WakefulBroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d(TAG, "Intent received");
         Intent startIntent = new Intent(context, TestActivity.class);
+        startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(startIntent);
     }
 }
